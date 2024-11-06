@@ -89,6 +89,19 @@ if(ANDROID)
     )
 endif()
 
+if(OHOS)
+    #add_subdirectory(ohos-specific/cpufeatures) TBD need fixed?
+    add_subdirectory(ohos-specific/pvmp3dec)
+    add_subdirectory(ohos-specific/tremolo)
+    add_subdirectory(sqlite3)
+    target_link_libraries(external 
+        # ext_cpufeatures  TBD need fixed?
+        ext_sqlite3
+        ext_pvmp3dec 
+        ext_tremolo
+    )
+endif()
+
 if(WINDOWS)
     # sqlite3 prebuilt only existed at windows
     add_subdirectory(sqlite3)
@@ -114,7 +127,7 @@ if(WINDOWS OR MACOSX OR LINUX)
     )
 endif()
 
-if(MACOSX OR ANDROID OR WINDOWS)
+if(MACOSX OR ANDROID OR WINDOWS OR OHOS)
     add_subdirectory(zlib)
     target_link_libraries(external 
         ext_zlib
