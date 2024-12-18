@@ -11,7 +11,6 @@ add_subdirectory(bullet)
 add_subdirectory(jpeg)
 add_subdirectory(openssl)
 add_subdirectory(tiff)
-add_subdirectory(uv)
 add_subdirectory(webp)
 add_subdirectory(websockets)
 add_subdirectory(tinyxml2)
@@ -22,6 +21,10 @@ add_subdirectory(edtaa3func)
 add_subdirectory(ConvertUTF)
 add_subdirectory(poly2tri)
 add_subdirectory(md5)
+if(NOT OHOS)
+  add_subdirectory(uv)
+  target_link_libraries(external ext_uv)
+endif()
 
 target_link_libraries(external
     ext_box2d
@@ -29,7 +32,6 @@ target_link_libraries(external
     ext_freetype
     ext_recast
     ext_jpeg
-    ext_uv
     ext_webp
     ext_bullet
     ext_ssl
